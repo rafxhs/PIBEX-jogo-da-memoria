@@ -14,14 +14,25 @@ OBS: não altere o arquivo jogo.js!!!
 // Lista de símbolos das cartas
 let simbolos: string[] = ["💻", "🌐", "🛜", "👩🏽‍💻", "📱", "🔗"];
 
+// Lista final com as cartas duplicadas e embaralhadas
 let cartas: string[] = [];
+
+// Cartas viradas no momento
 let cartasViradas: HTMLElement[] = [];
+
+// Contador de pares encontrados
 let paresEncontrados: number = 0;
+
+// Controle de tempo
 let tempo: number = 0;
 let intervalo: number;
 
-// Tempo máximo permitido (em segundos); se passar desse tempo e não tiver achado todos os pares, o jogador perde
+// Controla se o tempo já começou
+let tempoIniciado: boolean = false;
+
+// Tempo máximo permitido (em segundos)
 let tempoMaximo: number = 60;
+
 /*
 1min = 60s
 2min = 120s
@@ -47,21 +58,36 @@ window.onload = function () {
 // =============================
 
 function iniciarJogo(): void {
+
+  // Duplica os símbolos (cria os pares)
   cartas = [...simbolos, ...simbolos];
+
+  // Embaralha as cartas
   cartas.sort(() => Math.random() - 0.5);
+
+  // Reset das variáveis
   paresEncontrados = 0;
   tempo = 0;
+  tempoIniciado = false;
   jogoEncerrado = false;
+  cartasViradas = [];
 
-  iniciarTempo();
+  // Atualiza tempo na tela
+  document.getElementById("tempo")!.innerText = "0";
+
+  // Limpa intervalo anterior (segurança)
+  clearInterval(intervalo);
 
   let tabuleiro = document.getElementById("tabuleiro")!;
   tabuleiro.innerHTML = "";
 
+  // Cria as cartas no HTML
   for (let i = 0; i < cartas.length; i++) {
+
     let carta = document.createElement("div");
     carta.className = "carta";
     carta.dataset.valor = cartas[i];
+
     carta.onclick = function () {
       virarCarta(carta);
     };
@@ -75,9 +101,19 @@ function iniciarJogo(): void {
 // =============================
 
 function virarCarta(carta: HTMLElement): void {
+
+  // Se o jogo já terminou, não permite jogar
   if (jogoEncerrado) return;
 
+  // Inicia o tempo apenas no primeiro clique válido
+  if (!tempoIniciado) {
+    iniciarTempo();
+    tempoIniciado = true;
+  }
+
+  // Permite virar no máximo 2 cartas
   if (cartasViradas.length < 2 && !carta.classList.contains("virada")) {
+
     carta.classList.add("virada");
     carta.innerText = carta.dataset.valor!;
 
@@ -94,20 +130,26 @@ function virarCarta(carta: HTMLElement): void {
 // =============================
 
 function verificarPar(): void {
+
   let carta1 = cartasViradas[0];
   let carta2 = cartasViradas[1];
 
   if (carta1.dataset.valor === carta2.dataset.valor) {
+
     paresEncontrados++;
     cartasViradas = [];
 
+    // Verifica vitória
     if (paresEncontrados === simbolos.length) {
       clearInterval(intervalo);
       jogoEncerrado = true;
       alert("Parabéns! Você venceu em " + tempo + " segundos!");
     }
+
   } else {
+
     setTimeout(function () {
+
       carta1.classList.remove("virada");
       carta2.classList.remove("virada");
 
@@ -115,24 +157,30 @@ function verificarPar(): void {
       carta2.innerText = "";
 
       cartasViradas = [];
+
     }, 800);
   }
 }
 
 // =============================
-// TEMPO
+// CONTROLE DO TEMPO
 // =============================
 
 function iniciarTempo(): void {
+
   intervalo = setInterval(function () {
+
     tempo++;
     document.getElementById("tempo")!.innerText = tempo.toString();
 
+    // Verifica derrota por tempo
     if (tempo >= tempoMaximo && paresEncontrados < simbolos.length) {
+
       clearInterval(intervalo);
       jogoEncerrado = true;
       alert("Tempo esgotado! Você perdeu 😢");
     }
+
   }, 1000);
 }
 
@@ -141,6 +189,7 @@ function iniciarTempo(): void {
 // =============================
 
 function reiniciarJogo(): void {
+
   clearInterval(intervalo);
   iniciarJogo();
 }
