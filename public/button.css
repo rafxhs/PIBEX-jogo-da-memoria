@@ -1,0 +1,51 @@
+.btn {
+    position: relative;
+    display: inline-block;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 3px solid #d1d1ea;
+
+    background: linear-gradient(
+        to bottom,
+        #0c24a9,
+        #a9a8ff
+    );
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.4),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-play {
+    padding: 30px 130px;
+    font-size: 24px;
+}
+
+.btn-about {
+    padding: 25px 120px;
+    font-size: 24px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 20px rgba(0, 0, 0, 0.5),
+        inset 0 4px 8px rgba(255, 255, 255, 0.5),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 6px 10px rgba(0, 0, 0, 0.4);
+}
