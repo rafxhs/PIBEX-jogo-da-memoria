@@ -1,0 +1,60 @@
+.btn {
+    position: relative;
+    display: inline-block;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ededed;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 3px solid #b9bdff;
+    background: linear-gradient(180deg,
+            #13baa9,
+            #280da3);
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.4),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-jogar {
+    padding: 30px 130px;
+    font-size: 24px;
+}
+
+.btn-sobre {
+    padding: 25px 120px;
+    font-size: 24px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(180deg,
+            #13baa9,
+            #280da3);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.btn-voltar {
+    text-decoration: none;
+    background-color: #1ED9C6;
+    color: #021859;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-voltar:hover {
+    background-color: #0cc0ae;
+}

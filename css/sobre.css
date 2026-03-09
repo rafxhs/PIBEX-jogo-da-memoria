@@ -1,43 +1,71 @@
-.about-page {
+.pagina-sobre {
     color: white;
 }
 
-.about-page header {
+.pagina-sobre header {
     max-width: 900px;
     margin: 0 auto 60px auto;
-    text-align: center;
+
 }
 
-.about-page h1 {
+.topo-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagina-sobre h1 {
     font-size: 42px;
-    margin-bottom: 35px;
     letter-spacing: 2px;
+    margin: 0;
 }
 
-.about-page header p {
+.pagina-sobre main p {
     font-size: 18px;
     margin-bottom: 20px;
     text-align: justify;
     opacity: 0.9;
 }
 
-.about-page header span {
+.pagina-sobre main span {
     font-weight: bold;
 }
 
-.team {
-    text-align: justify;
-    margin-top: 30px;
+.info-pagina-sobre {
+    grid-column: span 6;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 25px;
+    border-radius: 18px;
+    border: 2px solid rgba(202, 201, 242, 0.3);
 }
 
-.about-page main {
+.equipe span {
+    display: block;
+    text-align: left;
+    margin: 2rem 0 2rem 0;
+}
+
+.equipe ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 30px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.equipe li {
+    text-align: justify;
+}
+
+.pagina-sobre main {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.about-page main h2 {
+.pagina-sobre main h2 {
     text-align: center;
-    margin-bottom: 50px;
+    margin: 4rem 0 2rem 0;
 }
 
 .grid-layout {
@@ -47,11 +75,11 @@
     margin: 0 0 4rem 0;
 }
 
-.about-page p {
+.pagina-sobre p {
     text-align: justify;
 }
 
-.image-card {
+.card-imagem {
     grid-column: span 2;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(8px);
@@ -62,7 +90,7 @@
     transition: transform 0.3s ease;
 }
 
-.image-card.double {
+.card-imagem.dupla {
     grid-column: span 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -71,54 +99,54 @@
     align-items: start;
 }
 
-.image-card.double p {
+.card-imagem.dupla p {
     grid-column: span 2;
 }
 
-.image-card.double h3 {
+.card-imagem.dupla h3 {
     grid-column: span 2;
 }
 
-.image-card.double h4 {
+.card-imagem.dupla h4 {
     grid-column: span 2;
 }
 
-.image-card.double ul {
+.card-imagem.dupla ul {
     grid-column: span 2;
     margin: 0 0 0 2rem;
 }
 
-.image-card h3 {
+.card-imagem h3 {
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.image-card h4 {
+.card-imagem h4 {
     font-size: 14px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 8px;
 }
 
-.image-card:hover {
+.card-imagem:hover {
     transform: translateY(-8px);
 }
 
-.image-card p {
+.card-imagem p {
     font-size: 16px;
     margin-top: 10px;
     opacity: 0.9;
 }
 
-.image-card img {
+.card-imagem img {
     width: 100%;
     border-radius: 8px;
     display: block;
 }
 
-.image-card ul {
+.card-imagem ul {
     text-align: left;
     margin-top: 10px;
     opacity: 0.9;
